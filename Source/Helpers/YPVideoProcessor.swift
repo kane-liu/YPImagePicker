@@ -22,9 +22,8 @@ class YPVideoProcessor {
     static func makeVideoPathURL(temporaryFolder: Bool, fileName: String) -> URL {
         var outputURL: URL
         
-        let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.path ?? NSTemporaryDirectory()
         if temporaryFolder {
-            let outputPath = "\(path)\(fileName).\(YPConfig.video.fileType.fileExtension)"
+            let outputPath = "\(NSTemporaryDirectory())\(fileName).\(YPConfig.video.fileType.fileExtension)"
             outputURL = URL(fileURLWithPath: outputPath)
         } else {
             guard let documentsURL = FileManager
