@@ -141,7 +141,7 @@ class LibraryMediaManager {
                 
                 // 5. Configuring export session
 
-                let fileURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+                let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
                     .first?.appendingUniquePathComponent(pathExtension: YPConfig.video.fileType.fileExtension)
                     ?? URL(fileURLWithPath: NSTemporaryDirectory())
                 let exportSession = assetComposition
