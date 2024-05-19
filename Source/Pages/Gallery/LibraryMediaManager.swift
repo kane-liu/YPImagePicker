@@ -140,9 +140,10 @@ class LibraryMediaManager {
                 videoComposition.renderSize = cropRect.size // needed?
                 
                 // 5. Configuring export session
-                
-                let fileURL = URL(fileURLWithPath: NSTemporaryDirectory())
-                    .appendingUniquePathComponent(pathExtension: YPConfig.video.fileType.fileExtension)
+
+                let fileURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+                    .first?.appendingUniquePathComponent(pathExtension: YPConfig.video.fileType.fileExtension)
+                    ?? URL(fileURLWithPath: NSTemporaryDirectory())
                 let exportSession = assetComposition
                     .export(to: fileURL,
                             videoComposition: videoComposition,
